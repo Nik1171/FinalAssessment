@@ -15,7 +15,8 @@
     <!-- Fonts from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script defer src="./script.js"></script>
 </head>
 <body>
     <div class="website">
@@ -124,20 +125,23 @@
                     <form action="https://httpbin.org/post" class="contact-form" id="contact-form" method="POST">
                         <!-- Name -->
                         <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" placeholder="Your Name" class="name format">
+                        <input type="text" id="name" name="name" placeholder="Your Name" class="name format" required>
+                        <div class="error"></div>
 
                         <!-- Email -->
                         <label for="email">Email:</label>
                         <!-- email type wasnt used because form is validated using js so it wasn't needed -->
-                        <input type="text" name="email" id="email" placeholder="Email address..." class="email format">
+                        <input type="text" name="email" id="email" placeholder="Email address..." class="email format" required>
+                        <div class="error"></div>
 
                         <!-- Address -->
                         <label for="address">Current Address:</label>
-                        <textarea name="address" id="address" cols="30" rows="2" placeholder="Enter your full address" class="address"></textarea>
+                        <textarea name="address" id="address" cols="30" rows="2" placeholder="Enter your full address" class="address" required></textarea>
+                        <div class="error"></div>
 
                         <!-- Datalist for cities in Canada -->
                         <label for="name">City:</label>
-                        <input class="format" type="text" id="city" name="city" list="suggestions" placeholder="Enter your City"/>
+                        <input class="format" type="text" id="city" name="city" list="suggestions" placeholder="Enter your City" required>
                         <datalist id="suggestions">
                             <option label="Barrie" value="Barrie"></option>
                             <option label="Calgary" value="Calgary"></option>
@@ -160,7 +164,8 @@
 
                         <!-- Postal Code -->
                         <label for="pCode">Postal Code:</label>
-                        <input name="Postal_Code" type="text" id="pCode" class="format" placeholder="Postal Code">
+                        <input name="Postal_Code" type="text" id="pCode" class="format" pattern="[A-Za-z][0-9][A-Za-z][ ]?[0-9][A-Za-z][0-9]" placeholder="Postal Code" required>
+                        <div class="error"></div>
 
                         <!-- Purpose of this message -->
                         <br>
@@ -170,8 +175,11 @@
                             <label for="question">Question</label><br>
                             <input type="radio" id="comment" name="purpose" value="comment">
                             <label for="comment">Comment</label><br>
-                            <input type="radio" id="hiring" name="purpose" value="hiring">
-                            <label for="comment">Hiring</label><br>                        
+                            <input type="radio" id="hiring" name="purpose" value="hiring" style="display:inline" onclick="return inputty()">
+                            <label for="comment">Hiring</label><br> 
+                            <textarea name="purpose" id="hiring" cols="30" rows="2" placeholder="Hourly Charge = 20$/hr" class="hiring"></textarea>                      
+                            <input type="radio" id="meeting" name="purpose" value="meeting">                            
+                            <label for="comment">Meeting</label><br>
                         </div>
                         <br>
 
@@ -201,16 +209,15 @@
                 </div>
             </section>
         </main>
-
+        
         <!-- Webpage Footer -->
         <footer class="footer">
             <h4>Portfoloio</h4>
-
         </footer>
-
     </div>
 
-    <!-- JavaScript file -->
-    <script src="C:\FINAL ASSESMENT\Assests\file.js"></script>
+<!-- JavaScript file-->
+<script src="./script.js"></script>
+
 </body>
 </html>
